@@ -1,0 +1,18 @@
+[user]
+    name = David Leatherman
+    email = leathekd@gmail.com
+[color]
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
+[push]
+    default = tracking
+[diff "clojure"]
+    xfuncname = "^\\(.*"
+[alias]
+    shorten = "!sh -c 'curl -i http://git.io -F url=$1' -"
+[heroku]
+	remote = heroku
+[github]
+	user = leathekd
