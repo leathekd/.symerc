@@ -5,8 +5,7 @@ set -e
 # Not really using these yet:
 PROJECT=$1
 
-SYMERC_DIR=$(dirname $0)
-cd $SYMERC_DIR
+cd $(dirname $0)
 
 cp .emacs ~
 cp .bashrc ~
@@ -18,4 +17,4 @@ cp .tmux.conf ~
 sudo cp hub /usr/local/bin
 
 chmod +x setup
-sudo --background --non-interactive $SYMERC_DIR/setup
+setup &
