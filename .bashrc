@@ -5,12 +5,6 @@
 if [ `/usr/bin/whoami` = "root" ] ; then
   # root has a red prompt
   export PS1="\[\033[1;31m\]\u@\h \w \$ \[\033[0m\]"
-elif [ `hostname` = "zuse" -o `hostname` = "enigma" -o `hostname` = "dynabook" ] ; then
-  # the hosts I use on a daily basis have blue
-  export PS1="\[\033[1;36m\]\u@\h \w \$ \[\033[0m\]"
-elif [ `hostname` == domU* -o `hostname` = "lucid" -o `hostname` = "vagrant" ]; then
-  # green on VMs (EC2, vbox, etc)
-  export PS1="\[\033[1;32m\]\u@\h \w \$ \[\033[0m\]"
 else
   # purple for unknown hosts
   export PS1="\[\033[1;35m\]\u@\h \w \$ \[\033[0m\]"
@@ -59,4 +53,12 @@ function cloud () {
 
 export JAVA_CMD=/usr/bin/java
 
-tmux new -s "syme-session" -A
+# automatically start/attach tmux
+if [ "$PS1" != "" -a "${STARTED_TMUX:-x}" = x -a "${SSH_TTY:-x}" != x ]
+then
+    STARTED_TMUX=1; export STARTED_TMUX
+    ( (tmux has-session -t remote && tmux -2 attach-session -t remote) \
+        || (tmux -2 new-session -s remote) ) \
+        && exit 0
+    echo "tmux failed to start"
+fi
