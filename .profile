@@ -19,3 +19,8 @@ export DEBEMAIL="leathekd@gmail.com"
 export DEBFULLNAME="David Leatherman"
 
 export PROFILE_LOADED=y
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+fi
