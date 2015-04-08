@@ -1,0 +1,6 @@
+#!/bin/bash
+
+apt-get install -y emacs24-nox curl tree unzip zip mosh openjdk-7-jre-headless
+
+wget -qO /usr/local/bin/lein https://raw.github.com/technomancy/leiningen/stable/bin/lein
+chmod +x /usr/local/bin/lein

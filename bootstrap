@@ -5,8 +5,6 @@ set -e
 # Not really using these yet:
 PROJECT=$1
 
-sudo apt-get install -y emacs24-nox curl tree unzip zip mosh openjdk-7-jre-headless
-
 cd $(dirname $0)
 
 cp .emacs ~
@@ -18,5 +16,5 @@ cp .tmux.conf ~
 
 sudo cp hub /usr/local/bin
 
-sudo wget -qO /usr/local/bin/lein https://raw.github.com/technomancy/leiningen/stable/bin/lein
-sudo chmod +x /usr/local/bin/lein
+chmod +x setup
+sudo --background --non-interactive setup
