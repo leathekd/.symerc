@@ -8,17 +8,23 @@
 (when (null package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(better-defaults
-                      idle-highlight-mode
-                      elisp-slime-nav paredit
-                      smex scpaste parenface-plus
-                      find-file-in-project magit
-                      cider clojure-mode
-                      zenburn-theme))
+(defvar my-packages
+  '(better-defaults
+    idle-highlight-mode
+    elisp-slime-nav
+    paredit
+    smex
+    find-file-in-project
+    magit
+    cider
+    clojure-mode
+    zenburn-theme))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
+
+(setq magit-last-seen-setup-instructions "1.4.0")
 
 (setq-default ispell-program-name "aspell")
 
