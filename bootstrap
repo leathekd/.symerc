@@ -16,5 +16,5 @@ cp .tmux.conf ~
 
 sudo cp hub /usr/local/bin
 
-chmod +x setup
-setup &
+chmod +x /home/syme/.symerc/setup
+/home/syme/.symerc/setup &
