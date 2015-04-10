@@ -1,26 +1,30 @@
 ;; A lighter-weight init.el for 24
 
 (require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
 
-(when (null package-archive-contents)
-  (package-refresh-contents))
+;; stable packages first
+(add-to-list 'package-archives
+             '("melpa-stable" . "http://stable.melpa.org/packages/"))
 
-(defvar my-packages
-  '(better-defaults
-    idle-highlight-mode
-    elisp-slime-nav
-    paredit
-    smex
-    find-file-in-project
-    magit
-    cider
-    clojure-mode
-    zenburn-theme))
+(package-refresh-contents)
 
-(dolist (p my-packages)
+(dolist (p '(cider clojure-mode))
+  (when (not (package-installed-p p))
+    (package-install p)))
+
+;; bleeding edge
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/"))
+(package-refresh-contents)
+(dolist (p '(better-defaults
+             idle-highlight-mode
+             elisp-slime-nav
+             paredit
+             smex
+             find-file-in-project
+             magit
+             zenburn-theme))
   (when (not (package-installed-p p))
     (package-install p)))
 
