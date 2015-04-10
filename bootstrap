@@ -14,6 +14,9 @@ cp .gitconfig ~
 cp .profile ~
 cp .tmux.conf ~
 
+mkdir -p ~/.lein
+cp profiles.clj ~/.lein
+
 sudo cp hub /usr/local/bin
 
 chmod +x /home/syme/.symerc/setup
