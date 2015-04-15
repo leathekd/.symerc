@@ -28,22 +28,25 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
-(setq magit-last-seen-setup-instructions "1.4.0")
-
 (setq-default ispell-program-name "aspell")
 
+(setq magit-last-seen-setup-instructions "1.4.0")
+
+;; pretty colors
 (load-theme 'zenburn t)
-
 (set-face-foreground 'vertical-border "white")
-
 (when (<= (display-color-cells) 8)
   (defun hl-line-mode () (interactive)))
+
+;; some useful settings
+(column-number-mode t)
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+;;; bindings
 
 ;; Why would you ever background Emacs?
 (global-set-key (kbd "C-z") (lambda () (interactive)
                               (message "Nope.")))
-
-;;; bindings
 
 (global-set-key (kbd "C-c f") 'find-file-in-project)
 
